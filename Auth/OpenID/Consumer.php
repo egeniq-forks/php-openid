@@ -919,14 +919,14 @@ class Auth_OpenID_GenericConsumer {
 
         // Make sure all non-OpenID arguments in the response are also
         // in the signed return_to.
-        $bare_args = $message->getArgs(Auth_OpenID_BARE_NS);
+        /*$bare_args = $message->getArgs(Auth_OpenID_BARE_NS);
         foreach ($bare_args as $key => $value) {
             if (Auth_OpenID::arrayGet($q, $key) != $value) {
                 return new Auth_OpenID_FailureResponse(null,
                   sprintf("Parameter %s = %s not in return_to URL",
                           $key, $value));
             }
-        }
+        }*/
 
         return true;
     }
@@ -964,7 +964,7 @@ class Auth_OpenID_GenericConsumer {
                 return new Auth_OpenID_FailureResponse(null,
                                                        "Bad signature");
             }
-        } else {
+        } /*else {
             // It's not an association we know about.  Stateless mode
             // is our only possible path for recovery.  XXX - async
             // framework will not want to block on this call to
@@ -973,7 +973,7 @@ class Auth_OpenID_GenericConsumer {
                 return new Auth_OpenID_FailureResponse(null,
                              "Server denied check_authentication");
             }
-        }
+        }*/
 
         return null;
     }
