@@ -919,6 +919,10 @@ class Auth_OpenID_GenericConsumer {
 
         // Make sure all non-OpenID arguments in the response are also
         // in the signed return_to.
+        // Note Lineke: This code is turned off since this won't work correctly with ZF
+        // ZF together with the htaccess has added m, d and a GET variables which are not present
+        // (in the same format due to rewrite rules) in the signed return_to URL
+        /*
         $bare_args = $message->getArgs(Auth_OpenID_BARE_NS);
         foreach ($bare_args as $key => $value) {
             if (Auth_OpenID::arrayGet($q, $key) != $value) {
@@ -926,7 +930,7 @@ class Auth_OpenID_GenericConsumer {
                   sprintf("Parameter %s = %s not in return_to URL",
                           $key, $value));
             }
-        }
+        }*/
 
         return true;
     }
