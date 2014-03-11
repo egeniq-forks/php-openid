@@ -274,15 +274,15 @@ class Auth_OpenID_Parse {
         // Try to find the <HEAD> tag.
         $head_re = $this->headFind();
         $head_match = array();
-        if (!$this->match($head_re, $stripped, $head_match)) {
+        /*if (!$this->match($head_re, $stripped, $head_match)) {
                      ini_set( 'pcre.backtrack_limit', $old_btlimit );
                      return array();
-        }
+        }*/
 
         $link_data = array();
         $link_matches = array();
 
-        if (!preg_match_all($this->_link_find, $head_match[0],
+        if (!preg_match_all($this->_link_find, $stripped,
                             $link_matches)) {
             ini_set( 'pcre.backtrack_limit', $old_btlimit );
             return array();
@@ -366,7 +366,6 @@ function Auth_OpenID_legacy_discover($html_text, $server_rel,
     $p = new Auth_OpenID_Parse();
 
     $link_attrs = $p->parseLinkAttrs($html_text);
-
     $server_url = $p->findFirstHref($link_attrs,
                                     $server_rel);
 
