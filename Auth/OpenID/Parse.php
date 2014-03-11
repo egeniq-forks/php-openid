@@ -274,6 +274,7 @@ class Auth_OpenID_Parse {
         // Try to find the <HEAD> tag.
         $head_re = $this->headFind();
         $head_match = array();
+        // HACK TO MAKE THIS WORK WITH A SPECIFIC CASE EGENIQ
         /*if (!$this->match($head_re, $stripped, $head_match)) {
                      ini_set( 'pcre.backtrack_limit', $old_btlimit );
                      return array();
@@ -282,6 +283,8 @@ class Auth_OpenID_Parse {
         $link_data = array();
         $link_matches = array();
 
+        // HACK TO MAKE THIS WORK WITH A SPECIFIC CASE EGENIQ
+        // if (!preg_match_all($this->_link_find, $head_match,
         if (!preg_match_all($this->_link_find, $stripped,
                             $link_matches)) {
             ini_set( 'pcre.backtrack_limit', $old_btlimit );
